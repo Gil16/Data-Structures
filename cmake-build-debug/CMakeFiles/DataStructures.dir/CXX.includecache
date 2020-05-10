@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Gil/CLionProjects/DataStructures/LinkedList.h
+C:/Users/Gil/CLionProjects/Data-Structures/LinkedList.h
 iostream
 -
 
-C:/Users/Gil/CLionProjects/DataStructures/main.cpp
+C:/Users/Gil/CLionProjects/Data-Structures/main.cpp
 iostream
 -
 LinkedList.h
-C:/Users/Gil/CLionProjects/DataStructures/LinkedList.h
+C:/Users/Gil/CLionProjects/Data-Structures/LinkedList.h
 

@@ -90,6 +90,18 @@ public:
         return nullptr; // unreachable
     }
 
+    int GetListSize() {
+        return size;
+    }
+
+    node<T>* GetListHead() {
+        return head;
+    }
+
+    node<T>* GetListTail() {
+        return tail;
+    }
+
     node<T>* operator[](int index) {
         return GetNodeByIndex(index);
     }
