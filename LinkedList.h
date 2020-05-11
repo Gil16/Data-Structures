@@ -5,16 +5,11 @@
 #ifndef DATASTRUCTURES_LINKEDLIST_H
 #define DATASTRUCTURES_LINKEDLIST_H
 
-
 #include <iostream>
+#include "Utilities.h"
 
 #define EMPTY_LIST 0
 
-template<class T>
-struct node {
-    node<T> *next;
-    T data;
-};
 
 template<class T>
 class LinkedList {
@@ -90,16 +85,23 @@ public:
         return nullptr; // unreachable
     }
 
-    int GetListSize() {
+    int GetListSize() const {
         return size;
     }
 
-    node<T>* GetListHead() {
+    node<T>* GetListHead() const {
         return head;
     }
 
-    node<T>* GetListTail() {
+    node<T>* GetListTail() const {
         return tail;
+    }
+
+    LinkedList<T>& operator=(const LinkedList<T>& list) {
+        head = list.GetListHead();
+        tail = list.GetListTail();
+        size = list.GetListSize();
+        return *this;
     }
 
     node<T>* operator[](int index) {

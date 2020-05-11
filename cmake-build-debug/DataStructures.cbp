@@ -83,6 +83,12 @@
 		<Unit filename="C:/Users/Gil/CLionProjects/Data-Structures/LinkedList.h">
 			<Option target="DataStructures"/>
 		</Unit>
+		<Unit filename="C:/Users/Gil/CLionProjects/Data-Structures/Queue.h">
+			<Option target="DataStructures"/>
+		</Unit>
+		<Unit filename="C:/Users/Gil/CLionProjects/Data-Structures/Utilities.h">
+			<Option target="DataStructures"/>
+		</Unit>
 		<Unit filename="C:/Users/Gil/CLionProjects/Data-Structures/main.cpp">
 			<Option target="DataStructures"/>
 		</Unit>
