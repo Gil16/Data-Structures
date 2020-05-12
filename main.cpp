@@ -1,21 +1,17 @@
 #include <iostream>
 #include "LinkedList.h"
 #include "Queue.h"
+#include "Stack.h"
 
 int main() {
-    auto *list = new LinkedList<int>();
-    list->AddNode(1);
-    list->AddNode(2);
-    list->AddNode(3);
-    list->AddNode(4);
-    list->PrintList();
+    auto stack = new Stack<int>();
+    stack->Push(1);
+    stack->Push(2);
+    stack->Push(3);
+    stack->Push(4);
+    stack->Push(5);
 
-    std::cout << std::endl;
-
-    auto *queue = new Queue<char*>();
-    queue->Enqueue(const_cast<char *>("World"));
-    queue->Enqueue(const_cast<char *>("Hello"));
-    queue->PrintQueue();
+    std::cout << stack->Size();
 
     return 0;
 }

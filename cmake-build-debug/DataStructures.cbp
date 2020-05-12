@@ -86,6 +86,9 @@
 		<Unit filename="C:/Users/Gil/CLionProjects/Data-Structures/Queue.h">
 			<Option target="DataStructures"/>
 		</Unit>
+		<Unit filename="C:/Users/Gil/CLionProjects/Data-Structures/Stack.h">
+			<Option target="DataStructures"/>
+		</Unit>
 		<Unit filename="C:/Users/Gil/CLionProjects/Data-Structures/Utilities.h">
 			<Option target="DataStructures"/>
 		</Unit>
