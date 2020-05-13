@@ -80,6 +80,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Gil/CLionProjects/Data-Structures/AVL.h">
+			<Option target="DataStructures"/>
+		</Unit>
 		<Unit filename="C:/Users/Gil/CLionProjects/Data-Structures/LinkedList.h">
 			<Option target="DataStructures"/>
 		</Unit>

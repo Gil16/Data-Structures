@@ -3,4 +3,4 @@ project(DataStructures)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(DataStructures main.cpp LinkedList.h Queue.h Utilities.h Stack.h)
+add_executable(DataStructures main.cpp LinkedList.h Queue.h Utilities.h Stack.h AVL.h)
