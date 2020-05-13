@@ -38,10 +38,16 @@ class AVLTree{
     AVLTreeNode<Data, Key> *root;
     int size;
 
-
+    static int max(int a, int b) {
+        return (a > b ? a : b);
+    }
+    // TODO: rotation functions: R, L -> RR,  LL, RL, LR
 public:
     AVLTree() : root(nullptr), size(0) {}
     ~AVLTree() { if(root) { delete root; } }
+    bool operator==(AVLTreeNode<Data, Key> &node1, AVLTreeNode<Data, Key> &node2) {
+        return (*(node1.key) == *(node2.key));
+    }
 
     bool insert(Data *data, Key *key) {
         if(!data || !key) {
@@ -63,7 +69,7 @@ public:
                     } else {
                         parent->right = new AVLTreeNode<Data, Key>(data, key, parent);
                     }
-                    // balance
+                    // TODO: balance
                     break;
                 }
             }
@@ -72,6 +78,23 @@ public:
         return true;
     }
 
+    void remove(Key *key) {
+
+    }
+
+    void reBalance(AVLTreeNode<Data, Key> *node) {
+
+    }
+
+    void setBalance(AVLTreeNode<Data, Key> *node) {
+        node->balance = getHeight(node->left) - getHeight(node->right);
+    }
+    int getHeight(AVLTreeNode<Data, Key> *node) {
+        if (!node){
+            return -1;
+        }
+        return 1 + max(getHeight(node->left), getHeight(node->right));
+    }
     bool isKeyExists(Key *key) {
         if(!root) {
             return false;
@@ -91,6 +114,9 @@ public:
             }
         }
         return nullptr;
+    }
+    AVLTreeNode<Data, Key>* getRoot() {
+        return root;
     }
 
 };
