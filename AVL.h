@@ -41,7 +41,56 @@ class AVLTree{
     static int max(int a, int b) {
         return (a > b ? a : b);
     }
-    // TODO: rotation functions: R, L -> RR,  LL, RL, LR
+    AVLTreeNode<Data, Key>* rotateLeft(AVLTreeNode<Data, Key> *a) {
+        AVLTreeNode<Data, Key> *b = a->right;
+        b->parent = a->parent;
+        a->right = b->left;
+        if(a->right != nullptr){
+            a->right->parent = a;
+        }
+        b->left = a;
+        a->parent = b;
+        if(b->parent != nullptr) {
+            if(b->parent->right == a) {
+                b->parent->right = b;
+            } else {
+                b->parent->left = b;
+            }
+        }
+        setBalance(a);
+        setBalance(b);
+        return b;
+    }
+    AVLTreeNode<Data, Key>* rotateRight(AVLTreeNode<Data, Key> *b) {
+        AVLTreeNode<Data, Key> *a = b->left;
+        a->parent = b->parent;
+        b->left = a->right;
+
+        if(b->left != nullptr) {
+            b->left->parent = b;
+        }
+        a->right = b;
+        b->parent = a;
+        if(a->parent != nullptr) {
+            if(a->parent->right == b) {
+                a->parent->right = a;
+            } else {
+                a->parent->left = a;
+            }
+        }
+        setBalance(b);
+        setBalance(a);
+        return a;
+    }
+    AVLTreeNode<Data, Key>* rotateLeftRight(AVLTreeNode<Data, Key> *n) {
+        n->left = rotateLeft(n->left);
+        return rotateRight(n);
+    }
+    AVLTreeNode<Data, Key>* rotateRightLeft(AVLTreeNode<Data, Key> *n) {
+        n->right = rotateRight(n->right);
+        return rotateLeft(n);
+    }
+
 public:
     AVLTree() : root(nullptr), size(0) {}
     ~AVLTree() { if(root) { delete root; } }
@@ -69,7 +118,7 @@ public:
                     } else {
                         parent->right = new AVLTreeNode<Data, Key>(data, key, parent);
                     }
-                    // TODO: balance
+                    reBalance(parent);
                     break;
                 }
             }
@@ -79,11 +128,29 @@ public:
     }
 
     void remove(Key *key) {
-
+        // TODO: 
     }
 
     void reBalance(AVLTreeNode<Data, Key> *node) {
-
+        setBalance(node);
+        if(node->balance == MIN_BALANCE) {
+            if(getHeight(node->left->left) >= getHeight(node->left->right)) {
+                node = rotateRight(node);
+            } else {
+                node = rotateLeftRight(node);
+            }
+        } else if(node->balance == MAX_BALANCE) {
+            if(getHeight(node->right->right) >= getHeight(node->right->left)) {
+                node = rotateLeft(node);
+            } else {
+                node = rotateRightLeft(node);
+            }
+        }
+        if(node->parent != nullptr) {
+            reBalance(node->parent);
+        } else {
+            root = node;
+        }
     }
 
     void setBalance(AVLTreeNode<Data, Key> *node) {
