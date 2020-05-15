@@ -19,7 +19,7 @@ public:
     AVLTreeNode *left, *right, *parent;
     AVLTreeNode() : data(nullptr), key(nullptr), balance(0),left(nullptr), right(nullptr), parent(nullptr) {}
     AVLTreeNode(Data* d, Key* k, AVLTreeNode* t) : data(d),key(k), balance(0), left(nullptr), right(nullptr), parent(t) {}
-    ~TreeNode(){
+    ~AVLTreeNode(){
         if(left) {
             delete left;
         } if(right) {
@@ -94,9 +94,9 @@ class AVLTree{
 public:
     AVLTree() : root(nullptr), size(0) {}
     ~AVLTree() { if(root) { delete root; } }
-    bool operator==(AVLTreeNode<Data, Key> &node1, AVLTreeNode<Data, Key> &node2) {
+ /*   bool operator==(AVLTreeNode<Data, Key> &node1, AVLTreeNode<Data, Key> &node2) {
         return (*(node1.key) == *(node2.key));
-    }
+    } */
 
     bool insert(Data *data, Key *key) {
         if(!data || !key) {
@@ -127,19 +127,87 @@ public:
         return true;
     }
 
-    void remove(Key *key) {
-        // TODO: 
+    void remove(AVLTreeNode<Data, Key> *node) {
+        if(!root || !node) {
+            return;
+        }
+        if(!node->key) {
+            return;
+        }
+        if(!isKeyExists(node->key)) {
+            return;
+        } else {
+            AVLTreeNode<Data, Key> *node_parent = node->parent;
+            // node is a leaf
+            if(!node->right && !node->left) {
+                if(!node_parent) {
+                    root = nullptr;
+                } else if(node_parent->left == node) {
+                    node_parent->left = nullptr;
+                } else {
+                    node_parent->right = nullptr;
+                }
+                delete node;
+                size--;
+                reBalance(node_parent);
+            }
+            // node has only left son
+            else if(!node->right) {
+                if(!node_parent) {
+                    root = node->left;
+                    root->parent = nullptr;
+                } else if(node_parent->left == node) {
+                    node_parent->left = node->left;
+                    node->left->parent = node_parent;
+                } else {
+                    node_parent->right = node->left;
+                    node->left->parent = node_parent;
+                }
+                delete node;
+                size--;
+                reBalance(node_parent);
+            }
+            // node has only right son
+            else if(!node->left) {
+                if(!node_parent) {
+                    root = node->right;
+                    root->parent = nullptr;
+                } else if(node_parent->left == node) {
+                    node_parent->left = node->right;
+                    node->right->parent = node_parent;
+                } else {
+                    node_parent->right = node->right;
+                    node->right->parent = node_parent;
+                }
+                delete node;
+                size--;
+                reBalance(node_parent);
+            }
+            // has left and right sons
+            // replace with the next greater key
+            else {
+                AVLTreeNode<Data, Key> *temp_node = node->right;
+                while(temp_node->left != nullptr) {
+                    temp_node = temp_node->left;
+                }
+                node->data = temp_node->data;
+                node->key = temp_node->key;
+                remove(temp_node);
+            }
+        }
+
+
     }
 
     void reBalance(AVLTreeNode<Data, Key> *node) {
         setBalance(node);
-        if(node->balance == MIN_BALANCE) {
+        if(node->balance == MAX_BALANCE) {
             if(getHeight(node->left->left) >= getHeight(node->left->right)) {
                 node = rotateRight(node);
             } else {
                 node = rotateLeftRight(node);
             }
-        } else if(node->balance == MAX_BALANCE) {
+        } else if(node->balance == MIN_BALANCE) {
             if(getHeight(node->right->right) >= getHeight(node->right->left)) {
                 node = rotateLeft(node);
             } else {
@@ -184,6 +252,9 @@ public:
     }
     AVLTreeNode<Data, Key>* getRoot() {
         return root;
+    }
+    int treeSize() {
+        return size;
     }
 
 };
