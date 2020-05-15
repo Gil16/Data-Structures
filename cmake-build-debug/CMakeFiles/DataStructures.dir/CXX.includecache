@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/Gil/CLionProjects/Data-Structures/AVL.h
+
 C:/Users/Gil/CLionProjects/Data-Structures/LinkedList.h
 iostream
 -
@@ -31,4 +33,8 @@ Queue.h
 C:/Users/Gil/CLionProjects/Data-Structures/Queue.h
 Stack.h
 C:/Users/Gil/CLionProjects/Data-Structures/Stack.h
+AVL.h
+C:/Users/Gil/CLionProjects/Data-Structures/AVL.h
+assert.h
+-
 
