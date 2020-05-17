@@ -70,7 +70,6 @@ public:
         }
         siftHeap();
     }
-
     ~MinHeap() {
         if(heap) {
             delete[] heap;
@@ -78,15 +77,42 @@ public:
     }
 
     void insert(T* element) {
-
+        if(!element) {
+            return;
+        }
+        if(heap_size-1 == num_elements) {
+            T* new_heap = new T[2*heap_size + 1];
+            for(int i=MIN_INDEX ; i < num_elements ; i++) {
+                new_heap[i] = heap[i];
+            }
+            delete[] heap;
+            heap = new_heap;
+            heap_size = 2*heap_size + 1;
+        }
+        heap[num_elements + 1] = element;
+        num_elements++;
+        siftUp(num_elements);
     }
 
     void deleteMin() {
-
+        if(num_elements == 0) {
+            return;
+        }
+        swap(heap[MIN_INDEX], heap[num_elements]);
+        num_elements--;
+        siftDown(MIN_INDEX);
     }
 
-    void decElement(T* remove, T* updated) {
-
+    void decElement(int position, T* updated) {
+        if(num_elements == 0 || position < 0 || position > num_elements ) {
+            return;
+        }
+        // Cant increase the element
+        if(heap[position] < updated) {
+            return;
+        }
+        heap[position] = updated;
+        siftUp(position);
     }
 
     T getMin() {
