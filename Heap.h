@@ -7,7 +7,7 @@
 
 #define MIN_INDEX 1
 
-// array heap
+
 template <class T>
 class MinHeap {
     T* heap;
@@ -28,7 +28,7 @@ class MinHeap {
             swap(heap[index], heap[double_index]);
             siftDown(double_index);
         } else {
-            if((heap[index] < heap[double_index]) && (getMin() < heap[double_index + 1])) {
+            if((heap[index] < heap[double_index]) && (heap[index] < heap[double_index + 1])) {
                 return;
             }
             int min = (heap[double_index] < heap[double_index + 1]) ? double_index : (double_index + 1);
@@ -52,6 +52,7 @@ class MinHeap {
         for(int i = (num_elements / 2) ; i > 0 ; i--) {
             siftDown(i);
         }
+
     }
     static void swap(T &a, T &b) {
         T temp = a;
@@ -70,6 +71,7 @@ public:
         }
         siftHeap();
     }
+
     ~MinHeap() {
         if(heap) {
             delete[] heap;
@@ -122,7 +124,6 @@ public:
     int getNumElements() {
         return num_elements;
     }
-
 };
 
 #endif //DATASTRUCTURES_HEAP_H
