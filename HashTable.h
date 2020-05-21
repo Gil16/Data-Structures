@@ -1,6 +1,7 @@
 #ifndef DATASTRUCTURES_HASHTABLE_H
 #define DATASTRUCTURES_HASHTABLE_H
 
+
 #include <cmath>
 #include "Utilities.h"
 #include "Exceptions.h"

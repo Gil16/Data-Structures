@@ -1,6 +1,7 @@
 #ifndef DATASTRUCTURES_HEAP_H
 #define DATASTRUCTURES_HEAP_H
 
+
 #include "Utilities.h"
 #include "Exceptions.h"
 

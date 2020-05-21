@@ -1,6 +1,7 @@
 #ifndef DATASTRUCTURES_EXCEPTIONS_H
 #define DATASTRUCTURES_EXCEPTIONS_H
 
+
 #include <exception>
 
 using std::exception;

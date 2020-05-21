@@ -1,6 +1,7 @@
 #ifndef DATASTRUCTURES_QUEUE_H
 #define DATASTRUCTURES_QUEUE_H
 
+
 #include "Utilities.h"
 #include "Exceptions.h"
 

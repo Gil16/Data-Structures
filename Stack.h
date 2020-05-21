@@ -1,6 +1,7 @@
 #ifndef DATASTRUCTURES_STACK_H
 #define DATASTRUCTURES_STACK_H
 
+
 #include "Utilities.h"
 #include "Exceptions.h"
 

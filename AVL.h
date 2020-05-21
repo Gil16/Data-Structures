@@ -1,6 +1,7 @@
 #ifndef DATASTRUCTURES_AVL_H
 #define DATASTRUCTURES_AVL_H
 
+
 #include "Exceptions.h"
 
 #define MAX_BALANCE 2

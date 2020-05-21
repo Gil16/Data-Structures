@@ -1,6 +1,7 @@
 #ifndef DATASTRUCTURES_UTILITIES_H
 #define DATASTRUCTURES_UTILITIES_H
 
+
 template<class T>
 struct node {
     node<T> *next;
