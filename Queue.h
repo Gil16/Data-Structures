@@ -42,11 +42,15 @@ void Queue<T>::enqueue(T data) {
 
 template <class T>
 void Queue<T>::dequeue() {
-    if(!back) {
+     if(!back || !front) {
         throw EmptyException();
     }
-    if(back == front) {
-        throw EmptyException();
+    if(front == back) {
+        delete front;
+        size--;
+        front = nullptr;
+        back = nullptr;
+        return;
     }
     auto temp_node = back;
     while(temp_node->next != front) {
