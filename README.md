@@ -2,7 +2,7 @@
 
 Generic type implementation of data structure.
 
-**Hash Table:**\
+## Hash Table:
 Implemented as a dynamic array, hash table base dimension starting of a prime number.\
 Double hashing function: h(k) = h(k) + i  ; i>=0\
 when:  
@@ -18,7 +18,7 @@ Functions complexity:
 - member: O(1) average on the input
 
 
-**Min Heap:**\
+## Min Heap:
 Implemented as an array, starting of index 1.
 
 Functions complexity:
@@ -31,7 +31,7 @@ Functions complexity:
 - decElement: O(log(n))
 
 
-**AVL tree:**\
+## AVL tree:
 Each AVL tree node has a generic data and generic key,\
 if your key is other than of type int, you need to implement a compare function.
 
@@ -46,7 +46,7 @@ Functions complexity:
 - isKeyExists: O(log(n))
 
 
-**Stack:**\
+## Stack:
 Implemented as an array with max size.
 
 Functions complexity:
@@ -55,7 +55,7 @@ Functions complexity:
 - getTop: O(1)
 
 
-**LinkedList:**\
+## LinkedList:
 Its a single linked list.
 
 Functions complexity:
@@ -64,7 +64,7 @@ Functions complexity:
 - getNodeByIndex: O(n)
 
 
-**Queue:**\
+## Queue:
 Implemented as a single linked list.
 
 Functions complexity:
